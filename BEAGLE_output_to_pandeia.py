@@ -196,6 +196,10 @@ exposureDict = {'DEEP':{'clear':{'ngroup':19,'nint':2,'nexp':36}},\
 #exposureDict = {'DEEP':{'clear':{'ngroup':19,'nint':2,'nexp':36},'f070lp':{'ngroup':19,'nint':2,'nexp':9},'f100lp':{'ngroup':19,'nint':2,'nexp':9},'f170lp':{'ngroup':19,'nint':2,'nexp':9},'f290lp':{'ngroup':19,'nint':2,'nexp':9}}}
 #exposureDict = {'DEEP':{'f100lp':{'ngroup':19,'nint':2,'nexp':9},'f170lp':{'ngroup':19,'nint':2,'nexp':9},'f290lp':{'ngroup':19,'nint':2,'nexp':9}}}
 exposureDict = {'DEEP':{'clear':{'ngroup':19,'nint':2,'nexp':36}}}
+exposureDict = {'DEEP':{'f070lp':{'ngroup':19,'nint':2,'nexp':9},\
+                'f100lp':{'ngroup':19,'nint':2,'nexp':9},\
+                'f170lp':{'ngroup':19,'nint':2,'nexp':9},\
+                'f290lp':{'ngroup':19,'nint':2,'nexp':9}}}
 
 cat = fits.open(args.beagleOutputFile)
 sizesSupplied = False
@@ -224,7 +228,8 @@ if args.addLines:
   lineLabelList = []
   for col in cat['HII EMISSION'].data.dtype.names:
     if 'flux' in col:
-      tmp = col.split("@")
+      print(col)
+      tmp = col.split("_")
       lineWlList.append(np.float(tmp[1].split("_")[0]))
       lineLabelList.append(col)
       print lineWlList[-1], lineLabelList[-1]
