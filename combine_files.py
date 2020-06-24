@@ -357,6 +357,7 @@ if args.R1000lines:
             filter,grating = pickFilter_R1000(outputLineLambdaInOrder_R1000[wlIdx]*(1+redshift))
             if filter is not None:
                 for j,d in enumerate(ditherDict['dithers'][i]):
+                    print col+'_f_R1000_'+grating+'_'+filter+'_'+psStr+'_off_comb'
                     tempFlux = tempFlux + dithers[d][col+'_f_R1000_'+grating+'_'+filter+'_'+psStr+'_off_comb'][ditherDict['idxArr'][i][j]]
                     tempNoise = tempNoise + dithers[d][col+'_n_R1000_'+grating+'_'+filter+'_'+psStr+'_off_comb'][ditherDict['idxArr'][i][j]]**2
                 tempSn = tempFlux/np.sqrt(tempNoise)
